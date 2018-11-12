@@ -7,7 +7,7 @@
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
+	<link rel="shortcut icon" href="/resource/img/fav.png">
 	<!-- Author Meta -->
 	<meta name="author" content="colorlib">
 	<!-- Meta Description -->
@@ -19,82 +19,12 @@
 	<!-- Site Title -->
 	<title>Tangre Furniture</title>
 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-	<!--
-			CSS
-			============================================= -->
-	<link rel="stylesheet" href="/resource/css/linearicons.css">
-	<link rel="stylesheet" href="/resource/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/resource/css/bootstrap.css">
-	<link rel="stylesheet" href="/resource/css/magnific-popup.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/css/lightgallery.min.css">
-	<link rel="stylesheet" href="/resource/css/nice-select.css">
-	<link rel="stylesheet" href="/resource/css/animate.min.css">
-	<link rel="stylesheet" href="/resource/css/owl.carousel.css">
-	<link rel="stylesheet" href="/resource/css/main.css">
+	<%@include file="/WEB-INF/view/cssjs.jsp" %>
 </head>
 
 <body>
-	<!--################ Start Header Area ########-->
-	<header id="header" id="home">
-		<div class="header-top">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-sm-6 col-4 no-padding">
-						<div class="header-top-left">
-							<a href="">
-								<i class="fa fa-phone"></i>
-								012-6532-568-9746
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-6 col-sm-6 col-8 header-top-right no-padding">
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-							<li><a href="#"><i class="fa fa-behance"></i></a></li>
-						</ul>
-						<ul>
-							<li>
-								<a href="#">Get free Quote</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<hr>
-		<div class="container main-menu">
-			<div class="row align-items-center justify-content-between d-flex">
-				<div id="logo">
-					<a href="index.html"><img src="/resource/img/logo.png" alt="" title="" /></a>
-				</div>
-				<nav id="nav-menu-container">
-					<ul class="nav-menu">
-						<li class="menu-active"><a href="index.html">home</a></li>
-						<li><a href="portfolio.html">portfolio</a></li>
-						<li><a href="/view/about.do">about</a></li>
-						<li class="menu-has-children"><a href="">blog</a>
-							<ul>
-								<li><a href="blog-home.html">Blog Home</a></li>
-								<li><a href="blog-single.html">Blog Single</a></li>
-							</ul>
-						</li>
-						<li class="menu-has-children"><a href="">Pages</a>
-							<ul>
-								<li><a href="portfolio-details.html">Portfolio Details</a></li>
-								<li><a href="elements.html">Elements</a></li>
-							</ul>
-						</li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</nav>
-				<!--######## #nav-menu-container -->
-			</div>
-		</div>
-	</header>
-	<!--######## End Header Area ########-->
+
+<%@include file="/WEB-INF/view/mainTop.jsp" %>
 
 	<!--######## start banner Area ########-->
 	<section class="home-banner-area relative" id="home">
@@ -104,7 +34,7 @@
 					<h1>
 						Creativity <br> Beyond <br> Life
 					</h1>
-					<a href="#" class="primary-btn header-btn text-capitalize mt-10">hire us now!</a>
+					<a href="#" class="primary-btn header-btn text-capitalize mt-10">조회하러 가기&nbsp;&nbsp;→</a>
 				</div>
 			</div>
 		</div>
@@ -597,24 +527,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
 	<!--######## End footer Area ########-->
-
-	<script src="/resource/js/vendor/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	 crossorigin="anonymous"></script>
-	<script src="/resource/js/vendor/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-	<script src="/resource/js/easing.min.js"></script>
-	<script src="/resource/js/hoverIntent.js"></script>
-	<script src="/resource/js/superfish.min.js"></script>
-	<script src="/resource/js/jquery.ajaxchimp.min.js"></script>
-	<script src="/resource/js/jquery.magnific-popup.min.js"></script>
-	<script src="/resource/js/owl.carousel.min.js"></script>
-	<script src="/resource/js/isotope.pkgd.min.js"></script>
-	<script src="/resource/js/owl.carousel.min.js"></script>
-	<script src="/resource/js/jquery.nice-select.min.js"></script>
-	<script src="/resource/js/jquery.lightbox.js"></script>
-	<script src="/resource/js/mail-script.js"></script>
-	<script src="/resource/js/main.js"></script>
+	
 </body>
 
 </html>

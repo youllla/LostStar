@@ -27,53 +27,55 @@ import poly.util.CmmUtil;
 public class MainController {
 	private Logger log = Logger.getLogger(this.getClass());
 	
-	/*
-	 * 비즈니스 로직(중요 로직을 수행하기 위해 사용되는 서비스를 메모리에 적재(싱글톤패턴 적용됨)
-	 * */
-	@Resource(name = "NoticeService")
-	private INoticeService noticeService;
 	
-	/*
-	 * 함수명 위의 value="notice/NoticeList" => /notice/NoticeList.do로 호출되는 url은 무조건 이 함수가 실행된다.
-	 * method=RequestMethod.GET => 폼 전송방법을 지정하는 것으로 get방식은 GET, post방식은 POST이다.
-	 * method => 기입안하면 GET, POST 모두 가능하나, 가급적 적어주는 것이 좋다.
-	 * */
-	
+	//메인화면
 	@RequestMapping(value="main")
 	public String main(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
 		
 		log.info("main");
-		return "/index";
+		return "/main";
 	}
 	
-	/**
-	 * 게시판 리스트 보여주기
-	 * */
-	/*@RequestMapping(value="notice/NoticeList", method=RequestMethod.GET)
-	public String NoticeList(HttpServletRequest request, HttpServletResponse response, 
-			ModelMap model) throws Exception {
-		
-		//로그 찍기(추후 찍은 로그를 통해 이 함수에 접근했는지 파악하기 용이하다.)
-		log.info(this.getClass().getName() + ".NoticeList start!");
-		
-		//공지사항 리스트 가져오기
-		List<NoticeDTO> rList = noticeService.getNoticeList();
-		
-		if (rList==null){
-			rList = new ArrayList<NoticeDTO>();
-			
-		}
-		
-		//조회된 리스트 결과값 넣어주기
-		model.addAttribute("rList", rList);
-		
-		//변수 초기화(메모리 효율화 시키기 위해 사용함)
-		rList = null;
-		
-		//로그 찍기(추후 찍은 로그를 통해 이 함수 호출이 끝났는지 파악하기 용이하다.)
-		log.info(this.getClass().getName() + ".NoticeList end!");
-		
-		//함수 처리가 끝나고 보여줄 JSP 파일명(/WEB-INF/view/notice/NoticeList.jsp) 
-		return "/notice/NoticeList";
-	}*/
+	@RequestMapping(value="notice/noticeList")
+	public String noticeList(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+		log.info("noticeList");
+		return "/notice/noticeList";
+	}
+	
+	@RequestMapping(value="portfolio")
+	public String portfolio(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+		log.info("portfolio");
+		return "/portfolio";
+	}
+	
+	@RequestMapping(value="blog_home")
+	public String bloghome(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+		log.info("blog_home");
+		return "/blog_home";
+	}
+	
+	@RequestMapping(value="blog_single")
+	public String blogsingle(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+		log.info("blog_single");
+		return "/blog_single";
+	}
+	
+	@RequestMapping(value="contact")
+	public String contact(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+		log.info("contact");
+		return "/contact";
+	}
+	
+	@RequestMapping(value="portfolio_detail")
+	public String portfolio_detail(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+		log.info("portfolio_detail");
+		return "/portfolio_detail";
+	}
+	
+	@RequestMapping(value="elements")
+	public String elements(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+		log.info("elements");
+		return "/elements";
+	}
+	
 }

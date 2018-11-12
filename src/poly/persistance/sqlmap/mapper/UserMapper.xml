@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.UserMapper">
+
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="UserDTO">
+		INSERT INTO USER (
+			NAME,
+			TEL,
+			ID,
+			PASSWORD,
+			REGDATE
+		)
+		VALUES (
+			#{name},
+			#{tel},
+			#{id},
+			#{password},
+			NOW()
+		)
+		<selectKey resultType="string" keyProperty="userNo" order="AFTER">
+			SELECT last_insert_id() FROM DUAL;
+		</selectKey>
+	</insert>
+	
+	<update id="updateRegNo" parameterType="UserDTO">
+		UPDATE USER
+		SET REGNO=#{regNo}
+		WHERE USERNO=#{regNo}
+	</update>
+
+</mapper>
