@@ -1,5 +1,13 @@
+<%@page import="poly.util.CmmUtil"%>
+<%@page import="poly.dto.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<% 
+	String id = CmmUtil.nvl((String) session.getAttribute("id"));
+	String name = CmmUtil.nvl((String) session.getAttribute("name"));
+	String userNo = CmmUtil.nvl((String) session.getAttribute("userNo"));
+%>
 <script>
 
 	function login() {
@@ -49,32 +57,42 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-6 col-sm-6 col-4 no-padding">
-						<div class="header-top-left">
-							<a href="">
-								<i class="fa fa-phone"></i>
-								012-6532-568-9746
-							</a>
-						</div>
 					</div>
+					
+					<!-- id가 공백이 아니면 로그인 성공 -->
+					<% if (!id.equals("")) { %>
+					<!-- 로그인 성공 -->
 					<div class="col-lg-6 col-sm-6 col-8 header-top-right no-padding">
 						<ul>
-							<!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-dribbble"></i></a></li> -->
+							<li><a href="#"></a></li>
+						</ul> 
+						<ul>
+							<li>
+								<b>
+									<a href=""><%=name%></a>님 환영합니다.
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<button type="submit" onclick="logout();" class="genric-btn info-border circle medium" value="로그아웃">LOGOUT</button>
+								</b>
+							</li>
+						</ul>
+					</div>
+					<%} else { %>
+					<!-- 로그인 전 or 실패 -->
+					<div class="col-lg-6 col-sm-6 col-8 header-top-right no-padding">
+						<ul>
 							<li><a href="#"></a></li>
 						</ul> 
 						<ul>
 							<li>
 								<a href="javascript:login()" data-toggle="modal" onclick="openLoginModal();">login&nbsp;&nbsp;</a>
-								<!-- class="btn big-login" -->
-								
 				<!-- 로그인 페이지 -->				
 				<%@ include file="/WEB-INF/view/user/userLogin.jsp" %>
-				
-								
 							</li>
 						</ul>
 					</div>
+					
+					<%} %>
+					
 				</div>
 			</div>
 		</div>
@@ -91,34 +109,27 @@
 						<li><a href="/notice/noticeList.do">notice</a></li>
 						<li class="menu-has-children"><a href="">community</a>
 							<ul>
-								<li><a href="/blog_home.do">Blog Home</a></li>
-								<li><a href="/blog_single.do">Blog Single</a></li>
+								<li><a href="/blog_home.do">공지사항</a></li>
+								<li><a href="/blog_single.do">자유게시판</a></li>
 							</ul>
 						</li>
-						<li class="menu-has-children"><a href="">Pages</a>
+						<li class="menu-has-children"><a href="#">MYPAGE</a>
 							<ul>
-								<li><a href="/portfolio_detail.do">Portfolio Details</a></li>
-								<li><a href="/elements.do">Elements</a></li>
+								<li><a href="/user/userDetail.do?userNo=<%=userNo%>">내 정보</a></li>
+								<li><a href="#">내가 쓴 글 보기</a></li>
+								<li><a href="/portfolio_detail.do">portfolio detail</a></li>
+								<li><a href="/elements.do">elements</a></li>
 							</ul>
 						</li>
+						<% if (userNo.equals("1")) { %>
+						<li><a href="/user/userList.do">회원 관리</a></li>
+						<%} %>
 						<li><a href="/contact.do">Contact</a></li>
 					</ul>
-					
-					<!-- <ul class="nav-menu">
-						<li class="menu-active"><a href="/main.do">home</a></li>
-						<li><a href="/portfolio.do">분실물 조회</a></li>
-						<li><a href="/about.do">notice</a></li>
-						<li class="menu-has-children"><a href="">community</a>
-							<ul>
-								<li><a href="/blog_home.do">Blog Home</a></li>
-								<li><a href="/blog_single.do">Blog Single</a></li>
-							</ul>
-						</li>
-					</ul> -->
-					
 				</nav>
 				<!--######## #nav-menu-container -->
 			</div>
 		</div>
 	</header>
 	<!--######## End Header Area ########-->
+	

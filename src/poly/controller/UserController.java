@@ -1,5 +1,7 @@
 package poly.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import poly.dto.UserDTO;
 import poly.service.INoticeService;
@@ -86,13 +90,129 @@ public class UserController {
 		return "/alert";
 	}
 	
+	/*//아이디 중복확인
+	@RequestMapping(value="user/idCheck")
+	@ResponseBody
+	public void idCheck(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id=CmmUtil.nvl(request.getParameter("id"));
+		
+		int count=0;
+		count = userService.idCheck(id);
+		log.info(count);
+		System.out.println("카운트 : " + count);
+		
+		response.getWriter().println(count);
+	}*/
+	
+	//아이디 중복확인 해야됨 !!!!!!!!!!!!!!!!!!!!!!
+	@RequestMapping(value="user/idCheck")
+	public @ResponseBody int idCheck(@RequestParam(value="id") String id) throws Exception{
+		System.out.println(id);
+
+		UserDTO uDTO = new UserDTO();
+		uDTO.setId(id);
+		log.info("uDTO id : " + uDTO.getId());
+
+		int idCheck = userService.getIdCheck(uDTO);
+
+		System.out.println(idCheck);
+		
+		return idCheck;
+	}
+	
+	//아이디찾기 화면
+	@RequestMapping(value="user/userFind")
+	public String userFind() throws Exception {
+		return "/user/userFind";
+	}
+	
+	//아이디찾기
+	@RequestMapping(value="user/idFind", method=RequestMethod.POST)
+	public @ResponseBody List<UserDTO> idFind(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+		log.info("idFind Start");
+		String name=CmmUtil.nvl(request.getParameter("name"));
+		log.info("name : " + name);
+		String tel=CmmUtil.nvl(request.getParameter("tel"));
+		log.info("tel : " + tel);
+		
+		UserDTO uDTO = new UserDTO();
+		uDTO.setName(name);
+		uDTO.setTel(tel);
+		
+		List<UserDTO> uList = userService.getIdFind(uDTO);
+		
+		log.info("idFind End");
+		
+		return uList;
+	}
+	
 	//로그인
-	@RequestMapping(value="user/userLogin")
-	public String userLogin(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+	@RequestMapping(value="user/loginProc", method=RequestMethod.POST)
+	public String loginProc(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+		String id=CmmUtil.nvl(request.getParameter("id"));
+		log.info("id : " + id);
+		String password=CmmUtil.nvl(request.getParameter("password"));
+		log.info("password : " + password);
 		
+		UserDTO uDTO = new UserDTO();
+		uDTO.setId(id);
+		uDTO.setPassword(password);
 		
+		uDTO=userService.userLogin(uDTO);
+		
+		String msg = "";
+		String url = "";
+		
+		if(uDTO == null) {
+			//로그인 실패
+			msg = "로그인이 실패하셨습니다.";
+			url = "/main.do";
+			model.addAttribute("msg", msg);
+			model.addAttribute("url", url);
+			return "/alert";
+		} else {
+			//로그인 성공
+			session.setAttribute("userNo", uDTO.getUserNo()); //관리자만 상단메뉴 달라지기 때문에 userNo 받아야함.
+			session.setAttribute("id", uDTO.getId());
+			session.setAttribute("name", uDTO.getName());
+			session.setAttribute("PASSWORD", password);
+		}
 		
 		return "/main";
+	}
+	
+	//로그아웃
+	@RequestMapping(value="user/logout")
+	public String logout(HttpSession session) throws Exception {
+		//세션을 초기화 시키는 함수
+		session.invalidate();
+		//로그아웃 끝
+	
+		return "/main";
+	}
+	
+	//회원 상세 정보
+	@RequestMapping(value="user/userDetail")
+	public String userDetail(HttpServletRequest request, HttpServletResponse response, HttpSession sesstion, Model model) throws Exception {
+		String userNo=CmmUtil.nvl(request.getParameter("userNo"));
+		log.info("userNo : " + userNo);
+		
+		UserDTO uDTO = userService.userDetail(userNo);
+		model.addAttribute("uDTO", uDTO);
+		
+		return "/user/userDetail";
+	}
+	
+	//회원 정보 변경 화면
+	@RequestMapping(value="user/userUpdateView")
+	public String userUpdateView(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws Exception {
+		String userNo=CmmUtil.nvl(request.getParameter("userNo"));
+		log.info("userNo : " + userNo);
+		
+		UserDTO uDTO = userService.userDetail(userNo);
+		model.addAttribute("uDTO", uDTO);
+		
+		return "/user/userUpdateView";
 	}
 
 }

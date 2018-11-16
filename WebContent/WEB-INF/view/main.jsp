@@ -119,7 +119,7 @@
 										<span class="progressBar-percentage progressBar-percentage-count">1.5K</span>
 									</div>
 								</div>
-								<h4>Happy Clients</h4>
+								<h4>버스</h4>
 							</div>
 						</div>
 
@@ -134,7 +134,7 @@
 										<span class="progressBar-percentage progressBar-percentage-count">10</span>
 									</div>
 								</div>
-								<h4>Years of Experience</h4>
+								<h4>지하철</h4>
 							</div>
 						</div>
 
@@ -149,7 +149,7 @@
 										<span class="progressBar-percentage progressBar-percentage-count">250</span>
 									</div>
 								</div>
-								<h4>Professionals</h4>
+								<h4>택시</h4>
 							</div>
 						</div>
 
@@ -188,124 +188,6 @@
 		</div>
 	</section>
 	<!--######## End Our Offer Area ########-->
-
-	<!--######## Start Recent Completed Project Area ########-->
-	<section class="recent-completed-project section-gap">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-12">
-					<div class="main-title text-center">
-						<h1>Our Recent Completed Projects</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="filters project-filter">
-						<ul>
-							<li class="active" data-filter=".all">All Categories</li>
-							<li data-filter=".brand">Branding</li>
-							<li data-filter=".img-man">Image Manipulation</li>
-							<li data-filter=".creative">Creative Work</li>
-							<li data-filter=".web">Web Design</li>
-							<li data-filter=".print-mat">Print Material</li>
-						</ul>
-					</div>
-					<div class="projects_inner row" id="lightgallery">
-						<div class="col-lg-4 col-sm-6 web all" data-src="/resource/img/project/p1.jpg">
-							<div class="projects_item">
-								<img class="img-fluid w-100" src="/resource/img/project/p1.jpg" alt="">
-								<div class="icon">
-									<img class="img-fluid" src="/resource/img/icon.png" alt="">
-								</div>
-							</div>
-							<div class="projects_text">
-								<h4>
-									<a href="portfolio-details.html">3D Helmet Design</a>
-								</h4>
-								<p>Client Project</p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6 brand all creative" data-src="/resource/img/project/p2.jpg">
-							<div class="projects_item">
-								<img class="img-fluid w-100" src="/resource/img/project/p2.jpg" alt="">
-								<div class="icon">
-									<img class="img-fluid" src="/resource/img/icon.png" alt="">
-								</div>
-							</div>
-							<div class="projects_text">
-								<h4>
-									<a href="portfolio-details.html">2D Vinyl Design</a>
-								</h4>
-								<p>Client Project</p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6 all" data-src="/resource/img/project/p3.jpg">
-							<div class="projects_item">
-								<img class="img-fluid w-100" src="/resource/img/project/p3.jpg" alt="">
-								<div class="icon">
-									<img class="img-fluid" src="/resource/img/icon.png" alt="">
-								</div>
-							</div>
-							<div class="projects_text">
-								<h4>
-									<a href="portfolio-details.html">Creative Poster Design</a>
-								</h4>
-								<p>Client Project</p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6 all print-mat" data-src="/resource/img/project/p4.jpg">
-							<div class="projects_item">
-								<img class="img-fluid w-100" src="/resource/img/project/p4.jpg" alt="">
-								<div class="icon">
-									<img class="img-fluid" src="/resource/img/icon.png" alt="">
-								</div>
-							</div>
-							<div class="projects_text">
-								<h4>
-									<a href="portfolio-details.html">Embosed Logo Design</a>
-								</h4>
-								<p>Client Project</p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6 brand img-man all" data-src="/resource/img/project/p5.jpg">
-							<div class="projects_item">
-								<img class="img-fluid w-100" src="/resource/img/project/p5.jpg" alt="">
-								<div class="icon">
-									<img class="img-fluid" src="/resource/img/icon.png" alt="">
-								</div>
-							</div>
-							<div class="projects_text">
-								<h4>
-									<a href="portfolio-details.html">3D Disposable Bottle</a>
-								</h4>
-								<p>Client Project</p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6 brand work img-man all" data-src="/resource/img/project/p6.jpg">
-							<div class="projects_item">
-								<img class="img-fluid w-100" src="/resource/img/project/p6.jpg" alt="">
-								<div class="icon">
-									<img class="img-fluid" src="/resource/img/icon.png" alt="">
-								</div>
-							</div>
-							<div class="projects_text">
-								<h4>
-									<a href="portfolio-details.html">3D Logo Design</a>
-								</h4>
-								<p>Client Project</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--######## End Recent Completed Project Area ########-->
 
 	<!--######## Start testimonial Area ########-->
 	<section class="testimonial-area section-gap">
@@ -370,163 +252,9 @@
 	</section>
 	<!--######## End testimonial Area ########-->
 
-	<!--######## Start Latest Blog Area ########-->
-	<section class="latest-blog-area section-gap">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-12">
-					<div class="main-title text-center">
-						<h1>Latest From Our Blog</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.
-						</p>
-					</div>
-				</div>
-			</div>
+	
 
-			<div class="row">
-				<div class="col-lg-3 col-md-6 single-blog">
-					<div class="thumb">
-						<img class="img-fluid w-100" src="/resource/img/b1.jpg" alt="">
-					</div>
-					<p class="date">10 Jan 2018</p>
-					<h4>
-						<a href="#">Cooking Perfect Fried Rice in minutes</a>
-					</h4>
-					<p>
-						inappropriate behavior ipsum dolor sit amet, consectetur.
-					</p>
-					<div class="meta-bottom d-flex justify-content-between">
-						<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-						<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 single-blog">
-					<div class="thumb">
-						<img class="img-fluid w-100" src="/resource/img/b2.jpg" alt="">
-					</div>
-					<p class="date">10 Jan 2018</p>
-					<h4>
-						<a href="#">Secret of making Heart Shaped eggs</a>
-					</h4>
-					<p>
-						inappropriate behavior ipsum dolor sit amet, consectetur.
-					</p>
-					<div class="meta-bottom d-flex justify-content-between">
-						<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-						<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 single-blog">
-					<div class="thumb">
-						<img class="img-fluid w-100" src="/resource/img/b3.jpg" alt="">
-					</div>
-					<p class="date">10 Jan 2018</p>
-					<h4>
-						<a href="#">How to check steak if it is tender or not</a>
-					</h4>
-					<p>
-						inappropriate behavior ipsum dolor sit amet, consectetur.
-					</p>
-					<div class="meta-bottom d-flex justify-content-between">
-						<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-						<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 single-blog">
-					<div class="thumb">
-						<img class="img-fluid w-100" src="/resource/img/b4.jpg" alt="">
-					</div>
-					<p class="date">10 Jan 2018</p>
-					<h4>
-						<a href="#">Addiction When Gambling Becomes A Problem</a>
-					</h4>
-					<p>
-						inappropriate behavior ipsum dolor sit amet, consectetur.
-					</p>
-					<div class="meta-bottom d-flex justify-content-between">
-						<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-						<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--######## End Latest Blog Area ########-->
-
-	<!--######## start footer Area ########-->
-	<footer class="footer-area section-gap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3  col-md-6">
-					<div class="single-footer-widget">
-						<h6>Top Products</h6>
-						<ul class="footer-nav">
-							<li><a href="#">Managed Website</a></li>
-							<li><a href="#">Manage Reputation</a></li>
-							<li><a href="#">Power Tools</a></li>
-							<li><a href="#">Marketing Service</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6">
-					<div class="single-footer-widget newsletter">
-						<h6>Newsletter</h6>
-						<p>You can trust us. we only send promo offers, not a single spam.</p>
-						<div id="mc_embed_signup">
-							<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-							 method="get" class="form-inline">
-
-								<div class="form-group row" style="width: 100%">
-									<div class="col-lg-8 col-md-12">
-										<input name="EMAIL" placeholder="Your Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address'"
-										 required="" type="email">
-										<div style="position: absolute; left: -5000px;">
-											<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-										</div>
-									</div>
-
-									<div class="col-lg-4 col-md-12">
-										<button class="nw-btn primary-btn">Subscribe<span class="lnr lnr-arrow-right"></span></button>
-									</div>
-								</div>
-								<div class="info"></div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3  col-md-12">
-					<div class="single-footer-widget mail-chimp">
-						<h6 class="mb-20">Instragram Feed</h6>
-						<ul class="instafeed d-flex flex-wrap">
-							<li><img src="/resource/img/i1.jpg" alt=""></li>
-							<li><img src="/resource/img/i2.jpg" alt=""></li>
-							<li><img src="/resource/img/i3.jpg" alt=""></li>
-							<li><img src="/resource/img/i4.jpg" alt=""></li>
-							<li><img src="/resource/img/i5.jpg" alt=""></li>
-							<li><img src="/resource/img/i6.jpg" alt=""></li>
-							<li><img src="/resource/img/i7.jpg" alt=""></li>
-							<li><img src="/resource/img/i8.jpg" alt=""></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- test -->
-			<div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap">
-				<p class="col-lg-8 col-sm-12 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
-				<div class="footer-social d-flex align-items-center">
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-dribbble"></i></a>
-					<a href="#"><i class="fa fa-behance"></i></a>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!--######## End footer Area ########-->
+	<%@include file="/WEB-INF/view/mainFooter.jsp" %>
 	
 </body>
 

@@ -7,6 +7,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <%@include file="/WEB-INF/view/cssjs.jsp" %>
+
+<script type="text/javascript">
+	/* var idChk = false; */
+	 $(function(){
+		$('#idCheck').click(function(){
+			idCheck();
+		});
+	}); 
+	
+	function idCheck(){
+		var id = $('#id').val();
+		$.ajax({
+			url : '/user/idCheck.do',
+			method : 'post',
+			data : {'id' : id},
+			success : function(data){
+				/* alert(data); */
+				if(data==0){
+					alert("아이디 사용이 가능합니다.");
+				}else{
+					alert("아이디 사용이 불가능합니다.");
+				}
+				
+			}
+		});
+	};
+	</script>
 </head>
 <body>
 
@@ -14,21 +41,22 @@
 
 	<div class="container" style="margin-top:20px;">
 		<div class="typography" style="align:center">
-		<h2 class="typo-list" style="margin-bottom:50px; text-align:center; /* text-decoration:underline; */">Register Account</h2>
+		<h2 class="typo-list" style="margin-bottom:50px; text-align:center; ">Register Account</h2>
 		</div>
 			<form action="/user/userRegProc.do" method="post">
 				<div style="margin-bottom:100px; padding:0px 10px 0px 10px; text-align:center; margin: 0 auto; width:60%; /* min-width:100% */">
 					<div class="mt-10">
-						<input type="text" id="name" name="name" placeholder="NAME" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required="" class="single-input">
+						<input type="text" id="name" name="name" placeholder="NAME" required="" class="single-input">
 					</div>
 					<div class="mt-10">
-						<input type="text" id="tel" name="tel" placeholder="TEL" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required="" class="single-input">
+						<input type="text" id="tel" name="tel" placeholder="TEL" required="" class="single-input">
 					</div>
 					<div class="mt-10">
-						<input type="text" id="id" name="id" placeholder="ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required="" class="single-input">
+						<input type="text" id="id" name="id" placeholder="ID" required="" class="single-input">
+						<button type="submit" class="genric-btn primary-border small" id="idCheck" name="idCheck" style="float:right;">중복확인</button>
 					</div>
 					<div class="mt-10">
-						<input type="password" id="password" style="margin-bottom:30px" name="password" placeholder="PASSWORD" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required="" class="single-input">
+						<input type="password" id="password" style="margin-bottom:30px" name="password" placeholder="PASSWORD" required="" class="single-input">
 					</div>
 				<div class="mt-10">
 				<button type="submit" class="genric-btn success circle arrow" style="margin-bottom:200px">JOIN<span class="lnr lnr-arrow-right"></span></button>
