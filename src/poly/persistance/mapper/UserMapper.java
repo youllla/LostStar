@@ -22,10 +22,17 @@ public interface UserMapper {
 	//로그인
 	public UserDTO userLogin(UserDTO uDTO) throws Exception;
 
+	//회원목록
+	public List<UserDTO> userList() throws Exception;
+
 	//회원상세정보
 	public UserDTO userDetail(String userNo) throws Exception;
 
 	//회원정보변경
 	public int userUpdate(UserDTO uDTO) throws Exception;
+
+	//회원탈퇴
+	public int userDelete(String userNo) throws Exception;
+
 	
 }

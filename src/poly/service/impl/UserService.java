@@ -46,6 +46,12 @@ public class UserService implements IUserService {
 		return userMapper.userLogin(uDTO);
 	}
 
+	//회원목록
+	@Override
+	public List<UserDTO> userList() throws Exception {
+		return userMapper.userList();
+	}
+	
 	//회원상세정보
 	@Override
 	public UserDTO userDetail(String userNo) throws Exception {
@@ -57,4 +63,11 @@ public class UserService implements IUserService {
 	public int userUpdate(UserDTO uDTO) throws Exception {
 		return userMapper.userUpdate(uDTO);
 	}
+
+	//회원탈퇴
+	@Override
+	public int userDelete(String userNo) throws Exception {
+		return userMapper.userDelete(userNo);
+	}
+
 }

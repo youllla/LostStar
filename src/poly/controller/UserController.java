@@ -191,6 +191,16 @@ public class UserController {
 		return "/main";
 	}
 	
+	//회원목록
+	@RequestMapping(value="user/userList")
+	public String userList(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+		List<UserDTO> uList=userService.userList();
+		
+		model.addAttribute("uList", uList);
+		
+		return "/user/userList";
+	}
+	
 	//회원 상세 정보
 	@RequestMapping(value="user/userDetail")
 	public String userDetail(HttpServletRequest request, HttpServletResponse response, HttpSession sesstion, Model model) throws Exception {
@@ -239,9 +249,11 @@ public class UserController {
 		String url="";
 		
 		if(result != 0) {
+			//수정 성공
 			msg = "수정이 완료되었습니다.";
 			url = "/user/userDetail.do?userNo=" + userNo;
 		} else {
+			//수정 실패
 			msg = "수정을 실패하셨습니다.";
 			url = "/user/userUpdateView.do?userNo=" + userNo;
 		}
@@ -252,6 +264,31 @@ public class UserController {
 		return "/alert";
 	}
 	
-	
+	//회원 탈퇴
+	@RequestMapping(value="user/userDelete")
+	public String userDelete(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws Exception {
+		String userNo=CmmUtil.nvl(request.getParameter("userNo"));
+		log.info("탈퇴 userNo : " + userNo);
+		
+		int result = userService.userDelete(userNo);
+		String msg="";
+		String url="";
+		
+		if(result != 0) {
+			//회원탈퇴 성공
+			msg="회원이 탈퇴되었습니다.";
+			session.invalidate();
+			url="/main.do";
+		} else {
+			//회원탈퇴 실패
+			msg="회원탈퇴를 실패하였습니다.";
+			url="/user/userDetail.do?userNo=" + userNo;
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "/alert";
+	}
 
 }

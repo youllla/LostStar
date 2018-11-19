@@ -23,7 +23,6 @@
 		<div class="typography" style="align:center">
 			<h2 class="typo-list" style="margin-bottom:50px; text-align:center;"><span class="lnr lnr-user"></span>&nbsp;회원정보</h2>
 		</div>
-		<form action="/user/userDelete.do" method="post">
 			<div style="margin-bottom:100px; padding:0px 10px 0px 10px; text-align:center; margin: 0 auto; width:60%; /* min-width:100% */">
 				<div class="mt-10">
 					<b style="color:black; float:left;">NAME</b>
@@ -39,10 +38,9 @@
 				</div>
 				<div class="mt-10" style="margin-bottom:200px;">
 					<a href="/user/userUpdateView.do?userNo=<%=userNo %>" class="genric-btn info-border medium">수정</a>
-					<button type="submit" class="genric-btn danger-border medium">탈퇴</button>
+					<a href="/user/userDelete.do?userNo=<%=userNo %>" class="genric-btn danger-border medium">탈퇴</a>
 				</div>
 			</div>
-		</form>
 	</div>
 	
 	<%@include file="/WEB-INF/view/mainFooter.jsp" %>
