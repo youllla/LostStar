@@ -51,4 +51,10 @@ public class UserService implements IUserService {
 	public UserDTO userDetail(String userNo) throws Exception {
 		return userMapper.userDetail(userNo);
 	}
+
+	//회원정보변경
+	@Override
+	public int userUpdate(UserDTO uDTO) throws Exception {
+		return userMapper.userUpdate(uDTO);
+	}
 }

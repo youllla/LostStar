@@ -214,5 +214,44 @@ public class UserController {
 		
 		return "/user/userUpdateView";
 	}
+	
+	//회원 정보 변경
+	@RequestMapping(value="user/userUpdate")
+	public String userUpdate(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws Exception {
+		String userNo=CmmUtil.nvl(request.getParameter("userNo"));
+		log.info("userNo : " + userNo);
+		String id=CmmUtil.nvl(request.getParameter("id"));
+		log.info("id : " + id);
+		String name=CmmUtil.nvl(request.getParameter("name"));
+		log.info("name : " + name);
+		String tel=CmmUtil.nvl(request.getParameter("tel"));
+		log.info("tel : " + tel);
+		
+		UserDTO uDTO = new UserDTO();
+		uDTO.setUserNo(userNo);
+		uDTO.setId(id);
+		uDTO.setName(name);
+		uDTO.setTel(tel);
+		
+		int result = userService.userUpdate(uDTO);
+		
+		String msg="";
+		String url="";
+		
+		if(result != 0) {
+			msg = "수정이 완료되었습니다.";
+			url = "/user/userDetail.do?userNo=" + userNo;
+		} else {
+			msg = "수정을 실패하셨습니다.";
+			url = "/user/userUpdateView.do?userNo=" + userNo;
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "/alert";
+	}
+	
+	
 
 }

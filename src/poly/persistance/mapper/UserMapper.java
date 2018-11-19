@@ -24,6 +24,8 @@ public interface UserMapper {
 
 	//회원상세정보
 	public UserDTO userDetail(String userNo) throws Exception;
-	
 
+	//회원정보변경
+	public int userUpdate(UserDTO uDTO) throws Exception;
+	
 }

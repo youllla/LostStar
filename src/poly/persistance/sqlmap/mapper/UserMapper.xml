@@ -66,5 +66,14 @@
 		FROM USER
 		WHERE USERNO=#{userNo}
 	</select>
+	
+	<!-- 회원정보변경 -->
+	<update id="userUpdate" parameterType="UserDTO">
+		UPDATE USER
+		SET NAME=#{name},
+			TEL=#{tel},
+			ID=#{id}
+		WHERE USERNO = #{userNo}
+	</update>
 
 </mapper>
