@@ -1,7 +1,8 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	UserDTO uDTO = (UserDTO)request.getAttribute("uDTO");
+	List<UserDTO> uList = (List<UserDTO>)request.getAttribute("uList");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,16 +18,52 @@
 <body>
 
 	<%@include file="/WEB-INF/view/mainTop.jsp" %>
-
-	<div class="container" style="margin-top:20px;">
-		<div class="typography" style="align:center">
-			<h2 class="typo-list" style="margin-bottom:50px; text-align:center;"><span class="lnr lnr-user"></span>&nbsp;회원목록</h2>
+	
+	<!--######## start banner Area ########-->
+	<section class="banner-area relative" id="home">
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white text-uppercase">
+						memberlist
+					</h1>
+					<p class="text-white link-nav"><a href="/main.do">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="/about.do">
+							MemberList</a></p>
+				</div>
+			</div>
 		</div>
-		<div>
-			
+	</section>
+	<!--######## End banner Area ########-->
+
+	<!-- <div class="container" style="margin-top:20px;">
+		<div class="typography" style="align: center">
+			<h2 class="typo-list" style="margin-bottom: 50px; text-align: center;">
+				<span class="lnr lnr-user"></span>&nbsp;회원목록
+			</h2>
+		</div>
+	</div> -->
+	<div class="col-lg-8 posts-list">
+		<div class="comments-area" style="">
+			<div class="comment-list">
+				<%for(int i=0; i<uList.size(); i++) {%>
+				<div class="single-comment justify-content-between d-flex">
+					<div class="user justify-content-between d-flex">
+						<div class="thumb">
+							<span class="lnr lnr-user"></span>
+						</div>
+						<div class="">
+							<h5><%=uList.get(i).getName() %></h5>
+							<p class="date"><%=uList.get(i).getId() %></p>
+						</div>
+					</div>
+					<div class="reply-btn">
+						<a href="/user/userDetail.do?userNo=<%=uList.get(i).getUserNo() %>" class="btn-reply text-uppercase">상세보기</a>
+					</div>
+				</div>
+				<%} %>
+			</div>
 		</div>
 	</div>
-	
 	<%@include file="/WEB-INF/view/mainFooter.jsp" %>
 
 </body>

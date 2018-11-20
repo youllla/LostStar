@@ -18,6 +18,22 @@
 <body>
 
 	<%@include file="/WEB-INF/view/mainTop.jsp" %>
+	
+	<!--######## start banner Area ########-->
+	<section class="banner-area relative" id="home">
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white text-uppercase">
+						memberinfo
+					</h1>
+					<p class="text-white link-nav"><a href="/main.do">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="/about.do">
+							MemberInfo</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--######## End banner Area ########-->
 
 	<div class="container" style="margin-top:20px;">
 		<div class="typography" style="align:center">

@@ -194,9 +194,12 @@ public class UserController {
 	//회원목록
 	@RequestMapping(value="user/userList")
 	public String userList(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
-		List<UserDTO> uList=userService.userList();
+		log.info("UserList Start!!");
 		
+		List<UserDTO> uList=userService.userList();
 		model.addAttribute("uList", uList);
+		
+		log.info("UserList End!!");
 		
 		return "/user/userList";
 	}
