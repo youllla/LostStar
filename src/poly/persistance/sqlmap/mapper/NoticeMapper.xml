@@ -36,7 +36,7 @@
 		</selectKey>
 	</insert>
 	
-	<!-- RegNo -->
+	<!-- RegNo 해야함!-->
 	<update id="updateRegNo" parameterType="NoticeDTO">
 		UPDATE NOTICE
 		SET NTREGNO=#{ntRegNo}
