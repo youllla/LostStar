@@ -37,7 +37,7 @@
 
 	<div class="container" style="margin-top:20px;">
 		<div class="typography" style="align:center">
-			<h2 class="typo-list" style="margin-bottom:50px; text-align:center;"><span class="lnr lnr-user"></span>&nbsp;회원정보</h2>
+			<h2 class="typo-list" style="margin-bottom:50px; text-align:center;"><span class="lnr lnr-user"></span>&nbsp;MemberInfo</h2>
 		</div>
 			<div style="margin-bottom:100px; padding:0px 10px 0px 10px; text-align:center; margin: 0 auto; width:60%; /* min-width:100% */">
 				<div class="mt-10">
@@ -53,8 +53,8 @@
 					<input type="text" id="id" name="id" placeholder="ID" required="" class="single-input" value="<%=uDTO.getId()%>" readonly>
 				</div>
 				<div class="mt-10" style="margin-bottom:200px;">
-					<a href="/user/userUpdateView.do?userNo=<%=userNo %>" class="genric-btn info-border medium">수정</a>
-					<a href="/user/userDelete.do?userNo=<%=userNo %>" class="genric-btn danger-border medium">탈퇴</a>
+					<a href="/user/userUpdateView.do?userNo=<%=uDTO.getUserNo()%>" class="genric-btn info-border medium">수정</a>
+					<a href="/user/userDelete.do?userNo=<%=uDTO.getUserNo()%>" class="genric-btn danger-border medium">탈퇴</a>
 				</div>
 			</div>
 	</div>

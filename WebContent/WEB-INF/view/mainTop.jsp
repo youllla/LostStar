@@ -69,7 +69,7 @@
 						<ul>
 							<li>
 								<b>
-									<a href=""><%=name%></a>님 환영합니다.
+									<a><%=name%></a>님 환영합니다.
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<button type="submit" onclick="logout();" class="genric-btn info-border circle medium" value="로그아웃">LOGOUT</button>
 								</b>
@@ -106,10 +106,10 @@
 					<ul class="nav-menu">
 						<li class="menu-active"><a href="/main.do">home</a></li>
 						<li><a href="/portfolio.do">분실물 조회</a></li>
-						<li><a href="/notice/noticeList.do">notice</a></li>
+						<li><a href="/blog_home.do">notice</a></li>
 						<li class="menu-has-children"><a href="">community</a>
 							<ul>
-								<li><a href="/blog_home.do">공지사항</a></li>
+								<li><a href="/notice/noticeList.do">공지사항</a></li>
 								<li><a href="/blog_single.do">자유게시판</a></li>
 							</ul>
 						</li>

@@ -36,12 +36,6 @@ public class MainController {
 		return "/main";
 	}
 	
-	@RequestMapping(value="notice/noticeList")
-	public String noticeList(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
-		log.info("noticeList");
-		return "/notice/noticeList";
-	}
-	
 	@RequestMapping(value="portfolio")
 	public String portfolio(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
 		log.info("portfolio");

@@ -32,7 +32,7 @@
 			<div class="row fullscreen d-flex align-items-center">
 				<div class="banner-content col-lg-9 col-md-12">
 					<h1>
-						Creativity <br> Beyond <br> Life
+						Lost <br> Property <br> Search
 					</h1>
 					<a href="#" class="primary-btn header-btn text-capitalize mt-10">조회하러 가기&nbsp;&nbsp;→</a>
 				</div>
@@ -40,67 +40,6 @@
 		</div>
 	</section>
 	<!--######## End banner Area ########-->
-
-	<!--######## Start Latest News Area ########-->
-	<section class="latest-news-area section-gap">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-12">
-					<div class="main-title text-center">
-						<h1>Latest News from all categories</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="single-news card">
-						<img class="card-top-img" src="/resource/img/news/n1.jpg" alt="Card image cap">
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="#">
-									Addiction Whit Gambling
-								</a>
-							</h4>
-							<p class="card-text">It is a good idea to think of your PC as an office. It stores files, programs, pictures. This
-								can be compared to an actual.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-news card">
-						<img class="card-top-img" src="/resource/img/news/n2.jpg" alt="Card image cap">
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="#">
-									Headset No Longer Wired
-								</a>
-							</h4>
-							<p class="card-text">It is a good idea to think of your PC as an office. It stores files, programs, pictures. This
-								can be compared to an actual.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-news card">
-						<img class="card-top-img" src="/resource/img/news/n3.jpg" alt="Card image cap">
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="#">
-									Life Advice Looking At Window
-								</a>
-							</h4>
-							<p class="card-text">It is a good idea to think of your PC as an office. It stores files, programs, pictures. This
-								can be compared to an actual.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--######## End Latest News Area ########-->
 
 	<!--######## Start Our Offer Area ########-->
 	<section class="our-offer-area section-gap">
@@ -191,64 +130,6 @@
 
 	<!--######## Start testimonial Area ########-->
 	<section class="testimonial-area section-gap">
-		<div class="container">
-			<div class="row">
-				<div class="active-testimonial-carusel">
-					<div class="single-testimonial item d-flex flex-row">
-						<div class="thumb">
-							<img class="img-fluid" src="/resource/img/elements/user1.png" alt="">
-						</div>
-						<div class="desc">
-							<p>
-								Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector,
-								hardware.
-							</p>
-							<h4 mt-30>Mark Alviro Wiens</h4>
-							<p class="mb-0">CEO at Google</p>
-						</div>
-					</div>
-					<div class="single-testimonial item d-flex flex-row">
-						<div class="thumb">
-							<img class="img-fluid" src="/resource/img/elements/user2.png" alt="">
-						</div>
-						<div class="desc">
-							<p>
-								Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector,
-								hardware.
-							</p>
-							<h4 mt-30>Lina Harrington</h4>
-							<p class="mb-0">CEO at Google</p>
-						</div>
-					</div>
-					<div class="single-testimonial item d-flex flex-row">
-						<div class="thumb">
-							<img class="img-fluid" src="/resource/img/elements/user1.png" alt="">
-						</div>
-						<div class="desc">
-							<p>
-								Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector,
-								hardware.
-							</p>
-							<h4 mt-30>Mark Alviro Wiens</h4>
-							<p class="mb-0">CEO at Google</p>
-						</div>
-					</div>
-					<div class="single-testimonial item d-flex flex-row">
-						<div class="thumb">
-							<img class="img-fluid" src="/resource/img/elements/user2.png" alt="">
-						</div>
-						<div class="desc">
-							<p>
-								Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector,
-								hardware.
-							</p>
-							<h4 mt-30>Lina Harrington</h4>
-							<p class="mb-0">CEO at Google</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</section>
 	<!--######## End testimonial Area ########-->
 

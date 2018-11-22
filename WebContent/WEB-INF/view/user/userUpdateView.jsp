@@ -39,7 +39,7 @@
 				</div>
 				<div class="mt-10" style="margin-bottom:200px;">
 					<button type="submit" class="genric-btn info-border medium">수정</button>
-					<a href="/user/userDetail.do?userNo=<%=userNo %>" class="genric-btn danger-border medium">취소</a>
+					<a href="/user/userDetail.do?userNo=<%=uDTO.getUserNo() %>" class="genric-btn danger-border medium">취소</a>
 				</div>
 			</div>
 		</form>

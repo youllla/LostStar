@@ -2,5 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- JAVA와 연결할 Mapper 파일 설정 -->
 <mapper namespace="poly.persistance.mapper.NoticeMapper">
-
+	
+	<!-- 공지사항 목록 -->
+	<select id="noticeList" resultType="NoticeDTO">
+		SELECT NTNO,
+			   NTTITLE,
+			   NTCONTENT,
+			   NTWRITER,
+			   NTREGDATE,
+			   NTREGNO,
+			   NTUPDDATE,
+			   NTUPDNO
+		FROM NOTICE
+	</select>
+	
+	<!-- 공지사항 등록 -->
+	<insert id="insertNotice" parameterType="NoticeDTO">
+		INSERT INTO NOTICE (
+			NTTITLE
+			,NTCONTENT
+			,NTWRITER
+			,NTREGDATE
+		)
+		VALUES (
+			#{ntTitle}
+			,#{ntContent}
+			,#{ntWriter}
+			,now()
+		)
+		
+		<selectKey resultType="string" keyProperty="ntNo" order="AFTER">
+			SELECT last_insert_id() FROM DUAL;
+		</selectKey>
+	</insert>
+	
+	<!-- RegNo -->
+	<update id="updateRegNo" parameterType="NoticeDTO">
+		UPDATE NOTICE
+		SET NTREGNO=#{ntRegNo}
+		WHERE NTNO=#{ntRegNo}
+	</update>
+	
 </mapper>

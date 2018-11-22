@@ -35,32 +35,32 @@
 	</section>
 	<!--######## End banner Area ########-->
 
-	<!-- <div class="container" style="margin-top:20px;">
+	<div class="container" style="margin-top:20px;">
 		<div class="typography" style="align: center">
 			<h2 class="typo-list" style="margin-bottom: 50px; text-align: center;">
-				<span class="lnr lnr-user"></span>&nbsp;회원목록
+				<span class="lnr lnr-user"></span>&nbsp;MemberList
 			</h2>
 		</div>
-	</div> -->
-	<div class="col-lg-8 posts-list">
-		<div class="comments-area" style="">
-			<div class="comment-list">
-				<%for(int i=0; i<uList.size(); i++) {%>
-				<div class="single-comment justify-content-between d-flex">
-					<div class="user justify-content-between d-flex">
-						<div class="thumb">
-							<span class="lnr lnr-user"></span>
+		<div style="width:100%; text-align:center;">
+			<div class="comments-area" style="width:75%; margin:0 auto;">
+				<div class="comment-list">
+					<%for(int i=0; i<uList.size(); i++) {%>
+					<div class="single-comment justify-content-between d-flex">
+						<div class="user justify-content-between d-flex">
+							<div class="thumb">
+								<span class="lnr lnr-user"></span>
+							</div>
+							<div>
+								<h5><%=uList.get(i).getName() %></h5>
+								<p class="date"><%=uList.get(i).getId() %></p>
+							</div>
 						</div>
-						<div class="">
-							<h5><%=uList.get(i).getName() %></h5>
-							<p class="date"><%=uList.get(i).getId() %></p>
+						<div class="reply-btn">
+							<a href="/user/userDetail.do?userNo=<%=uList.get(i).getUserNo() %>" class="btn-reply text-uppercase">상세보기</a>
 						</div>
 					</div>
-					<div class="reply-btn">
-						<a href="/user/userDetail.do?userNo=<%=uList.get(i).getUserNo() %>" class="btn-reply text-uppercase">상세보기</a>
-					</div>
+					<%} %>
 				</div>
-				<%} %>
 			</div>
 		</div>
 	</div>
