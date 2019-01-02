@@ -41,7 +41,7 @@
 
 	<div class="container" style="margin-top:20px;">
 		<div class="typography" style="align:center">
-		<h2 class="typo-list" style="margin-bottom:50px; text-align:center; ">Register Account</h2>
+		<h2 class="typo-list" style="margin-bottom:50px; text-align:center; ">회원가입</h2>
 		</div>
 			<form action="/user/userRegProc.do" method="post">
 				<div style="margin-bottom:100px; padding:0px 10px 0px 10px; text-align:center; margin: 0 auto; width:60%; /* min-width:100% */">
@@ -51,22 +51,22 @@
 					<div class="mt-10">
 						<input type="text" id="tel" name="tel" placeholder="TEL" required="" class="single-input">
 					</div>
-					<div class="mt-10">
-						<input type="text" id="id" name="id" placeholder="ID" required="" class="single-input">
-						<button type="submit" class="genric-btn primary-border small" id="idCheck" name="idCheck" style="float:right;">중복확인</button>
+					<div class="mt-10" style="margin-bottom:10px;">
+						<input type="email" id="id" name="id" placeholder="ID" required="" class="single-input" style="float:left; width:80%;">
+						<button type="submit" class="single-input genric-btn primary-border medium" id="idCheck" name="idCheck" style="float:right; width:17%; ">중복확인</button>
 					</div>
 					<div class="mt-10">
-						<input type="password" id="password" style="margin-bottom:30px" name="password" placeholder="PASSWORD" required="" class="single-input">
+						<input type="password" id="password" style="margin-bottom:10px" name="password" placeholder="PASSWORD" required="" class="single-input">
 					</div>
-				<div class="mt-10">
-				<button type="submit" class="genric-btn success circle arrow" style="margin-bottom:200px">JOIN<span class="lnr lnr-arrow-right"></span></button>
+					<div class="mt-10">
+						<input type="password" id="password" style="margin-bottom:30px" name="password" placeholder="PASSWORD CHECK" required="" class="single-input">
+					</div>
+					<div class="mt-10">
+						<button type="submit" class="genric-btn success circle arrow" style="margin-bottom:200px">JOIN<span class="lnr lnr-arrow-right"></span></button>
+					</div>
 				</div>
-					
-				</div>
-				
-				
 			</form>
-	</div>
+		</div>
 
 	<%@include file="/WEB-INF/view/mainFooter.jsp" %>
 

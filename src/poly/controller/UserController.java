@@ -1,5 +1,6 @@
 package poly.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +17,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import poly.dto.CommDTO;
+import poly.dto.NoticeDTO;
 import poly.dto.UserDTO;
+import poly.service.ICommService;
 import poly.service.INoticeService;
 import poly.service.IUserService;
 import poly.service.impl.UserService;
 import poly.util.CmmUtil;
+import poly.util.Email;
+import poly.util.EmailSender;
+import poly.util.TempKey;
 
 @Controller
 public class UserController {
@@ -27,6 +35,12 @@ public class UserController {
 	
 	@Resource(name = "UserService")
 	private IUserService userService;
+	@Resource(name = "NoticeService")
+	private INoticeService noticeService;
+	@Resource(name = "CommService")
+	private ICommService commService;
+	@Autowired
+	private EmailSender emailSender;
 	
 	
 	//회원가입 페이지
@@ -90,21 +104,7 @@ public class UserController {
 		return "/alert";
 	}
 	
-	/*//아이디 중복확인
-	@RequestMapping(value="user/idCheck")
-	@ResponseBody
-	public void idCheck(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String id=CmmUtil.nvl(request.getParameter("id"));
-		
-		int count=0;
-		count = userService.idCheck(id);
-		log.info(count);
-		System.out.println("카운트 : " + count);
-		
-		response.getWriter().println(count);
-	}*/
-	
-	//아이디 중복확인 해야됨 !!!!!!!!!!!!!!!!!!!!!!
+	//아이디 중복확인
 	@RequestMapping(value="user/idCheck")
 	public @ResponseBody int idCheck(@RequestParam(value="id") String id) throws Exception{
 		System.out.println(id);
@@ -121,15 +121,15 @@ public class UserController {
 	}
 	
 	//아이디찾기 화면
-	@RequestMapping(value="user/userFind")
-	public String userFind() throws Exception {
-		return "/user/userFind";
+	@RequestMapping(value="user/userIdFind")
+	public String userIdFind() throws Exception {
+		return "/user/userIdFind";
 	}
 	
 	//아이디찾기
-	@RequestMapping(value="user/idFind", method=RequestMethod.POST)
-	public @ResponseBody List<UserDTO> idFind(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
-		log.info("idFind Start");
+	@RequestMapping(value="user/userIdFind", method=RequestMethod.POST)
+	public @ResponseBody List<UserDTO> userIdFind(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+		log.info("userIdFind Start!!!");
 		String name=CmmUtil.nvl(request.getParameter("name"));
 		log.info("name : " + name);
 		String tel=CmmUtil.nvl(request.getParameter("tel"));
@@ -139,11 +139,132 @@ public class UserController {
 		uDTO.setName(name);
 		uDTO.setTel(tel);
 		
-		List<UserDTO> uList = userService.getIdFind(uDTO);
+		List<UserDTO> uList = userService.userIdFind(uDTO);
 		
-		log.info("idFind End");
+		log.info("userIdFind End");
 		
 		return uList;
+	}
+	
+	//아이디찾기
+	/*	@RequestMapping(value="user/userPwFind", method=RequestMethod.POST)
+		public @ResponseBody List<UserDTO> userPwFind(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
+			log.info("userPwFind Start!!!");
+			String name=CmmUtil.nvl(request.getParameter("name"));
+			log.info("name : " + name);
+			String id=CmmUtil.nvl(request.getParameter("id"));
+			log.info("id : " + id);
+			
+			UserDTO uDTO = new UserDTO();
+			uDTO.setName(name);
+			uDTO.setTel(id);
+			
+			List<UserDTO> uList = userService.userPwFind(uDTO);
+			
+			log.info("userPwFind End");
+			
+			return uList;
+		}*/
+	
+	//비밀번호찾기 화면
+		@RequestMapping(value="user/userPwFind")
+		public String userPwFind() throws Exception {
+			return "/user/userPwFind";
+		}
+	
+	//비밀번호 찾기
+	@RequestMapping(value="user/userPwFindProc", method=RequestMethod.POST)
+	public String pwFindProc(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+		log.info("userPwFind Start!!!!");
+		
+		String id=CmmUtil.nvl(request.getParameter("id"));
+		log.info(this.getClass() + "id : " + id);
+		String name=CmmUtil.nvl(request.getParameter("name"));
+		log.info(this.getClass() + "name : " + name);
+		
+		Email sendEmail = new Email();
+		UserDTO uDTO = new UserDTO();
+		uDTO.setId(id);
+		uDTO.setName(name);
+		
+		HashMap<String, Object> hMap = new HashMap<>();
+		hMap.put("uDTO", uDTO);
+		hMap = userService.userPwFind(hMap);
+		
+		int result = (int)hMap.get("result");
+		String msg="";
+		String url="";
+		
+		if(result == 0 ) {
+			msg= "회원 정보가 일치하지 않습니다.";
+			url="/user/userFind.do";
+		}else {
+			
+			TempKey tmpky = new TempKey();
+			String tmp = tmpky.getKey(10, false);
+			sendEmail.setReciver(id);
+			sendEmail.setSubject(name+"님의 임시비밀번호입니다.");
+			sendEmail.setContent(sendEmail.setContents(hMap) + tmp);
+			
+			emailSender.SendEmail(sendEmail);
+			
+			msg = "가입하신 이메일로 임시비밀번호가 전송되었습니다.";
+			url = "/main.do";
+		}
+		model.addAttribute("url", url);
+		model.addAttribute("msg", msg);
+		hMap = null;
+		uDTO = null;
+		
+		log.info("userPwFind End!!!!");
+		
+		return "/alert";
+	}
+	
+	//비밀번호 변경 페이지
+	@RequestMapping(value="user/userPwUpdate")
+	public String userPwUpdate(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+		String userNo=CmmUtil.nvl(request.getParameter("userNo"));
+		log.info("userNo : " + userNo);
+		
+		UserDTO uDTO = userService.userDetail(userNo);
+		model.addAttribute("uDTO", uDTO);
+		
+		return "/user/userPwUpdate";
+	}
+	
+	//비밀번호 변경
+	@RequestMapping(value="user/userPwUpdateProc")
+	public String userPwUpdateProc(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws Exception {
+		String userNo=CmmUtil.nvl(request.getParameter("userNo"));
+		log.info("userNo : " + userNo);
+		String password=CmmUtil.nvl(request.getParameter("password"));
+		log.info("password : " + password);
+		
+		UserDTO uDTO = new UserDTO();
+		uDTO.setUserNo(userNo);
+		uDTO.setPassword(password);
+		
+		int result = userService.userPwUpdateProc(uDTO);
+		
+		String msg="";
+		String url="";
+		
+		if(result != 0) {
+			//수정 성공
+			msg = "수정이 완료되었습니다.";
+			url = "/main.do";
+			session.invalidate();
+		} else {
+			//수정 실패
+			msg = "수정을 실패하였습니다.";
+			url = "/user/userPwUpdate.do?userNo=" + userNo;
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "/alert";
 	}
 	
 	//로그인
@@ -257,7 +378,7 @@ public class UserController {
 			url = "/user/userDetail.do?userNo=" + userNo;
 		} else {
 			//수정 실패
-			msg = "수정을 실패하셨습니다.";
+			msg = "수정을 실패하였습니다.";
 			url = "/user/userUpdateView.do?userNo=" + userNo;
 		}
 		
@@ -293,5 +414,42 @@ public class UserController {
 		
 		return "/alert";
 	}
-
+	
+	//내가 쓴 글 보기 페이지
+	@RequestMapping(value="/user/userWriteList")
+	public String userWriteList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws Exception {
+		List<NoticeDTO> nList = noticeService.userWriteList();
+		List<CommDTO> cList = commService.userWriteList();
+		
+		model.addAttribute("nList", nList);
+		model.addAttribute("cList", cList);
+		
+		return "/user/userWriteList";
+	}
+	
+	//내가 쓴 글 보기
+	@RequestMapping(value="/user/userWriteListAjax")
+	public @ResponseBody HashMap<String, Object> userWriteListAjax(HttpServletRequest request, Model model) throws Exception {
+		log.info("userWriteListAjax Start!!!");
+		
+		String userNo=CmmUtil.nvl(request.getParameter("userNo"));
+		log.info("userNo : " + userNo);
+		String commWriter=CmmUtil.nvl(request.getParameter("commWriter"));
+		log.info("commWriter : " + commWriter);
+		
+		HashMap<String, Object> hMap = new HashMap<>();
+		
+		if(userNo.equals("1")) {
+			List<NoticeDTO> nList = noticeService.userWriteList();
+			List<CommDTO> cList = commService.userWriteList();
+			hMap.put("nList", nList);
+			hMap.put("cList", cList);
+		} else {
+			List<CommDTO> cList = commService.userWriteList();
+			hMap.put("cList", cList);
+		}
+		
+		return hMap;
+	}
+	
 }

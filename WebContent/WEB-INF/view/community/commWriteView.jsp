@@ -69,19 +69,19 @@
 	<%@include file="/WEB-INF/view/mainTop.jsp" %>
 	<div class="container">
 		<div class="comment-form" style="width:80%; margin-left:100px; margin-bottom:70px;">
-			<h4>Notice Registration</h4>
-			<form action="/notice/noticeWrite.do" method="post">
+			<h4>게시판 글쓰기</h4>
+			<form action="/community/commWrite.do" method="post">
 				<div class="form-group">
-					<input type="text" class="form-control" id="ntTitle" name="ntTitle" placeholder="Title">
+					<input type="text" class="form-control" id="commTitle" name="commTitle" placeholder="Title">
 				</div>
 				<div class="form-group">
-					<textarea class="form-control mb-10" rows="10" id="ntContent" name="ntContent" placeholder="Content"></textarea>
+					<textarea class="form-control mb-10" rows="10" id="commContent" name="commContent" placeholder="Content"></textarea>
 				</div>
 				<button type="submit" class="myButton">등록</button>
 				<button type="reset" class="myButton">취소</button>
 				<!-- <button class="primary-btn primary" style="float: right;">Send Message</button> -->
-			<input type="hidden" name="ntWriter" value="<%=name %>" />
-			<input type="hidden" name="ntRegNo" value="<%=userNo %>"/>
+			<input type="hidden" name="commWriter" value="<%=name %>" />
+			<input type="hidden" name="commRegNo" value="<%=userNo %>"/>
 			</form>
 		</div>
 	</div>				

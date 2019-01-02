@@ -29,10 +29,28 @@ public class NoticeService implements INoticeService{
 		return noticeMapper.insertNotice(nDTO);
 	}
 
-	//ntNo=regNo
+	//공지사항 상세
 	@Override
-	public int updateRegNo(NoticeDTO nDTO2) throws Exception {
-		return noticeMapper.updateRegNo(nDTO2);
+	public NoticeDTO noticeDetail(String ntNo) throws Exception {
+		return noticeMapper.noticeDetail(ntNo);
+	}
+
+	//공지사항 수정
+	@Override
+	public int noticeUpdate(NoticeDTO nDTO) throws Exception {
+		return noticeMapper.noticeUpdate(nDTO);
+	}
+
+	//공지사항 삭제
+	@Override
+	public int noticeDelete(String ntNo) throws Exception {
+		return noticeMapper.noticeDelete(ntNo);
+	}
+
+	//내가 쓴 글 보기 페이지
+	@Override
+	public List<NoticeDTO> userWriteList() throws Exception {
+		return noticeMapper.userWriteList();
 	}
 	
 }

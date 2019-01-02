@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.CommMapper">
+
+	<!-- 자유게시판 목록 -->
+	<select id="commList" resultType="CommDTO">
+		SELECT
+			A.COMMNO as commNo
+		    ,A.COMMTITLE as commTitle
+			,A.COMMCONTENT as commContent
+			,A.COMMWRITER as commWriter
+			,A.COMMREGDATE as commRegDate
+			,A.COMMREGNO as commRegNo
+			,A.COMMUPDDATE as commUpdDate
+			,A.COMMUPDNO as commUpdNo
+		FROM(
+			SELECT
+				@ROWNUM:=@ROWNUM+1 AS COMMNO
+				,COMMTITLE
+				,COMMCONTENT
+				,COMMWRITER
+				,COMMREGDATE
+				,COMMREGNO
+				,COMMUPDDATE
+				,COMMUPDNO
+			FROM COMMUNITY, (select @ROWNUM :=0) r
+			ORDER BY FIELD(COMMREGNO, 1) DESC, COMMREGDATE DESC
+		    ) A
+	</select>
+	
+	<!-- 자유게시판 등록 -->
+	<insert id="insertComm">
+		INSERT INTO COMMUNITY (
+			COMMTITLE
+			,COMMCONTENT
+			,COMMWRITER
+			,COMMREGDATE
+			,COMMREGNO
+		)
+		VALUES (
+			#{commTitle}
+			,#{commContent}
+			,#{commWriter}
+			,now()
+			,#{commRegNo}
+		)
+		
+		<selectKey resultType="string" keyProperty="commNo" order="AFTER">
+			SELECT last_insert_id() FROM DUAL;
+		</selectKey>
+	</insert>
+	
+	<!-- 자유게시판 상세 -->
+	<select id="commDetail" parameterType="String" resultType="CommDTO">
+		SELECT COMMNO
+			  ,COMMTITLE
+			  ,COMMCONTENT
+			  ,COMMWRITER
+			  ,COMMREGDATE
+		FROM COMMUNITY
+		WHERE COMMNO=#{commNo}
+	</select>
+	
+	<!-- 자유게시판 수정 -->
+	<update id="commUpdate" parameterType="CommDTO">
+		UPDATE COMMUNITY
+		SET COMMTITLE=#{commTitle}
+			,COMMCONTENT=#{commContent}
+		WHERE COMMNO = #{commNo}
+	</update>
+	
+	<!-- 자유게시판 삭제 -->
+	<delete id="commDelete" parameterType="String">
+		DELETE FROM COMMUNITY
+		WHERE COMMNO=#{commNo}
+	</delete>
+	
+	<!-- 마이페이지 > 내가 쓴 글 보기 -->
+	<select id="userWriteList" resultType="CommDTO">
+		SELECT COMMNO
+			  ,COMMTITLE
+			  ,COMMCONTENT
+			  ,COMMWRITER
+			  ,COMMREGDATE
+			  ,COMMREGNO
+		FROM COMMUNITY
+	</select>
+	
+</mapper>

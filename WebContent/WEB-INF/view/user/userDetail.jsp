@@ -25,7 +25,7 @@
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
 					<h1 class="text-white text-uppercase">
-						memberinfo
+						회원정보
 					</h1>
 					<p class="text-white link-nav"><a href="/main.do">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="/about.do">
 							MemberInfo</a></p>
@@ -54,7 +54,9 @@
 				</div>
 				<div class="mt-10" style="margin-bottom:200px;">
 					<a href="/user/userUpdateView.do?userNo=<%=uDTO.getUserNo()%>" class="genric-btn info-border medium">수정</a>
-					<a href="/user/userDelete.do?userNo=<%=uDTO.getUserNo()%>" class="genric-btn danger-border medium">탈퇴</a>
+					<a href="/user/userDelete.do?userNo=<%=uDTO.getUserNo()%>" class="genric-btn danger-border medium" style="margin-bottom:10px;">탈퇴</a>
+					<br />
+					<a href="/user/userPwUpdate.do?userNo=<%=uDTO.getUserNo()%>" class="genric-btn primary medium">비밀번호 변경</a>
 				</div>
 			</div>
 	</div>

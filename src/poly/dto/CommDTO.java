@@ -2,62 +2,69 @@ package poly.dto;
 
 public class CommDTO {
 	
-	private String comNo; // 공지사항번호 (기본키)
-	private String comTitle; // 제목
-	private String comContent; // 내용
-	private String comWriter; // 작성자
-	private String comRegDate; // 공지사항등록일
-	private String comRegNo; // 공지사항등록번호
-	private String comUpdDate; // 공지사항수정일
-	private String comUpdNo; // 공지사항수정번호
+	private String No;
+	private String commNo; // 게시판번호 (기본키)
+	private String commTitle; // 제목
+	private String commContent; // 내용
+	private String commWriter; // 작성자
+	private String commRegDate; // 게시판등록일
+	private String commRegNo; // 게시판등록번호
+	private String commUpdDate; // 게시판수정일
+	private String commUpdNo; // 게시판수정번호
 	
-	public String getComNo() {
-		return comNo;
+	public String getNo() {
+		return No;
 	}
-	public void setComNo(String comNo) {
-		this.comNo = comNo;
+	public void setNo(String no) {
+		No = no;
 	}
-	public String getComTitle() {
-		return comTitle;
+	public String getCommNo() {
+		return commNo;
 	}
-	public void setComTitle(String comTitle) {
-		this.comTitle = comTitle;
+	public void setCommNo(String commNo) {
+		this.commNo = commNo;
 	}
-	public String getComContent() {
-		return comContent;
+	public String getCommTitle() {
+		return commTitle;
 	}
-	public void setComContent(String comContent) {
-		this.comContent = comContent;
+	public void setCommTitle(String commTitle) {
+		this.commTitle = commTitle;
 	}
-	public String getComWriter() {
-		return comWriter;
+	public String getCommContent() {
+		return commContent;
 	}
-	public void setComWriter(String comWriter) {
-		this.comWriter = comWriter;
+	public void setCommContent(String commContent) {
+		this.commContent = commContent;
 	}
-	public String getComRegDate() {
-		return comRegDate;
+	public String getCommWriter() {
+		return commWriter;
 	}
-	public void setComRegDate(String comRegDate) {
-		this.comRegDate = comRegDate;
+	public void setCommWriter(String commWriter) {
+		this.commWriter = commWriter;
 	}
-	public String getComRegNo() {
-		return comRegNo;
+	public String getCommRegDate() {
+		return commRegDate;
 	}
-	public void setComRegNo(String comRegNo) {
-		this.comRegNo = comRegNo;
+	public void setCommRegDate(String commRegDate) {
+		this.commRegDate = commRegDate;
 	}
-	public String getComUpdDate() {
-		return comUpdDate;
+	public String getCommRegNo() {
+		return commRegNo;
 	}
-	public void setComUpdDate(String comUpdDate) {
-		this.comUpdDate = comUpdDate;
+	public void setCommRegNo(String commRegNo) {
+		this.commRegNo = commRegNo;
 	}
-	public String getComUpdNo() {
-		return comUpdNo;
+	public String getCommUpdDate() {
+		return commUpdDate;
 	}
-	public void setComUpdNo(String comUpdNo) {
-		this.comUpdNo = comUpdNo;
+	public void setCommUpdDate(String commUpdDate) {
+		this.commUpdDate = commUpdDate;
+	}
+	public String getCommUpdNo() {
+		return commUpdNo;
+	}
+	public void setCommUpdNo(String commUpdNo) {
+		this.commUpdNo = commUpdNo;
 	}
 	
 }

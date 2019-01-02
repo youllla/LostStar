@@ -25,7 +25,7 @@
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
 					<h1 class="text-white text-uppercase">
-						memberlist
+						회원목록
 					</h1>
 					<p class="text-white link-nav"><a href="/main.do">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="/about.do">
 							MemberList</a></p>
@@ -64,6 +64,31 @@
 			</div>
 		</div>
 	</div>
+	
+	<nav class="blog-pagination justify-content-center d-flex" style="padding-bottom:1px; padding-top:20px;">
+		<ul class="pagination">
+			<li class="page-item">
+				<a href="#" class="page-link" aria-label="Previous">
+					<span aria-hidden="true">
+						<span class="lnr lnr-chevron-left"></span>
+					</span>
+				</a>
+			</li>
+			<li class="page-item active"><a href="#" class="page-link">01</a></li>
+			<li class="page-item"><a href="#" class="page-link">02</a></li>
+			<li class="page-item"><a href="#" class="page-link">03</a></li>
+			<li class="page-item"><a href="#" class="page-link">04</a></li>
+			<li class="page-item"><a href="#" class="page-link">09</a></li>
+			<li class="page-item">
+				<a href="#" class="page-link" aria-label="Next">
+					<span aria-hidden="true">
+						<span class="lnr lnr-chevron-right"></span>
+					</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	
 	<%@include file="/WEB-INF/view/mainFooter.jsp" %>
 
 </body>

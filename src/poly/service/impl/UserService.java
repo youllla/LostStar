@@ -1,5 +1,6 @@
 package poly.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -36,8 +37,24 @@ public class UserService implements IUserService {
 
 	//아이디 찾기
 	@Override
-	public List<UserDTO> getIdFind(UserDTO uDTO) throws Exception {
-		return userMapper.getIdFind(uDTO);
+	public List<UserDTO> userIdFind(UserDTO uDTO) throws Exception {
+		return userMapper.userIdFind(uDTO);
+	}
+	
+	//비밀번호 찾기
+	@Override
+	public HashMap<String, Object> userPwFind(HashMap<String, Object> hMap) throws Exception {
+		UserDTO uDTO = (UserDTO) hMap.get("uDTO");
+		long temp_Pw = (long) (Math.random() * 9000000000l) + 1000000000l;
+		String temp_password = Long.toHexString(temp_Pw);
+		uDTO.setPassword(temp_password);
+
+		int result = userMapper.userPwFind(uDTO);
+
+		hMap.put("tmpPass", temp_password);
+		hMap.put("result", result);
+		
+		return hMap;
 	}
 
 	//로그인
@@ -69,5 +86,12 @@ public class UserService implements IUserService {
 	public int userDelete(String userNo) throws Exception {
 		return userMapper.userDelete(userNo);
 	}
+
+	//비밀번호 변경
+	@Override
+	public int userPwUpdateProc(UserDTO uDTO) throws Exception {
+		return userMapper.userPwUpdateProc(uDTO);
+	}
+
 
 }

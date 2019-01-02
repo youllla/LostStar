@@ -17,8 +17,11 @@ public interface UserMapper {
 	public int getIdCheck(UserDTO uDTO) throws Exception;
 
 	//아이디 찾기
-	public List<UserDTO> getIdFind(UserDTO uDTO) throws Exception;
+	public List<UserDTO> userIdFind(UserDTO uDTO) throws Exception;
 
+	//비밀번호찾기
+	int userPwFind(UserDTO uDTO) throws Exception;
+	
 	//로그인
 	public UserDTO userLogin(UserDTO uDTO) throws Exception;
 
@@ -34,5 +37,7 @@ public interface UserMapper {
 	//회원탈퇴
 	public int userDelete(String userNo) throws Exception;
 
-	
+	//비밀번호 변경
+	public int userPwUpdateProc(UserDTO uDTO) throws Exception;
+
 }

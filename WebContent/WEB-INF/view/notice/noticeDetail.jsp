@@ -1,5 +1,9 @@
+<%@page import="poly.dto.NoticeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	NoticeDTO nDTO = (NoticeDTO)request.getAttribute("nDTO");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zxx" class="no-js">
 
@@ -67,23 +71,39 @@
 
 <body>
 	<%@include file="/WEB-INF/view/mainTop.jsp" %>
+	
+	<!--######## start banner Area ########-->
+	<section class="banner-area relative" id="home">
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white text-uppercase">
+						공지사항
+					</h1>
+					<p class="text-white link-nav"><a href="/main.do">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="/about.do">
+							Notice</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--######## End banner Area ########-->
+	
 	<div class="container">
 		<div class="comment-form" style="width:80%; margin-left:100px; margin-bottom:70px;">
-			<h4>Notice Registration</h4>
-			<form action="/notice/noticeWrite.do" method="post">
+			<h4>Notice</h4>
 				<div class="form-group">
-					<input type="text" class="form-control" id="title" name="title" placeholder="Title" readonly>
+					<input type="text" class="form-control" id="ntTitle" name="ntTitle" value="<%=nDTO.getNtTitle() %>" readonly>
 				</div>
 				<div class="form-group">
-					<textarea class="form-control mb-10" rows="10" id="content" name="content" placeholder="Content" readonly></textarea>
+					<textarea class="form-control mb-10" rows="10" id="ntContent" name="ntContent" readonly><%=nDTO.getNtContent() %></textarea>
 				</div>
-				<button type="submit" class="myButton">수정</button>
-				<button type="reset" class="myButton">삭제</button>
-				<!-- <button class="primary-btn primary" style="float: right;">Send Message</button> -->
+				<%if(userNo.equals("1")) {%>
+				<a href="/notice/noticeUpdateView.do?ntNo=<%=nDTO.getNtNo() %>" class="myButton">수정</a>
+				<a href="/notice/noticeDelete.do?ntNo=<%=nDTO.getNtNo()%>" class="myButton">삭제</a>
+				<%} %>
 			<input type="hidden" name="ntWriter" value="<%=name %>" />
-			</form>
 		</div>
-	</div>				
+	</div>
 	<%@include file="/WEB-INF/view/mainFooter.jsp" %>
 
 </body>

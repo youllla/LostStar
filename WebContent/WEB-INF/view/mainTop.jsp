@@ -7,6 +7,7 @@
 	String id = CmmUtil.nvl((String) session.getAttribute("id"));
 	String name = CmmUtil.nvl((String) session.getAttribute("name"));
 	String userNo = CmmUtil.nvl((String) session.getAttribute("userNo"));
+	String commWriter = CmmUtil.nvl((String) session.getAttribute("commWriter"));
 %>
 <script>
 
@@ -100,31 +101,27 @@
 		<div class="container main-menu">
 			<div class="row align-items-center justify-content-between d-flex">
 				<div id="logo">
-					<a href="/main.do"><img src="/resource/img/youlogo.png" alt="" title="" /></a>
+					<a href="/main.do"><img src="/resource/img/youlogo.png"/></a>
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
 						<li class="menu-active"><a href="/main.do">home</a></li>
-						<li><a href="/portfolio.do">분실물 조회</a></li>
-						<li><a href="/blog_home.do">notice</a></li>
+						<li><a href="/lost/lostItemSearch.do">분실물 조회</a></li>
 						<li class="menu-has-children"><a href="">community</a>
 							<ul>
 								<li><a href="/notice/noticeList.do">공지사항</a></li>
-								<li><a href="/blog_single.do">자유게시판</a></li>
+								<li><a href="/community/commList.do">자유게시판</a></li>
 							</ul>
 						</li>
 						<li class="menu-has-children"><a href="#">MYPAGE</a>
 							<ul>
 								<li><a href="/user/userDetail.do?userNo=<%=userNo%>">내 정보</a></li>
-								<li><a href="#">내가 쓴 글 보기</a></li>
-								<li><a href="/portfolio_detail.do">portfolio detail</a></li>
-								<li><a href="/elements.do">elements</a></li>
+								<li><a href="/user/userWriteList.do?userNo=<%=userNo%>">내가 쓴 글 보기</a></li>
 							</ul>
 						</li>
 						<% if (userNo.equals("1")) { %>
 						<li><a href="/user/userList.do">회원 관리</a></li>
 						<%} %>
-						<li><a href="/contact.do">Contact</a></li>
 					</ul>
 				</nav>
 				<!--######## #nav-menu-container -->

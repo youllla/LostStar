@@ -32,9 +32,9 @@
 			<div class="row fullscreen d-flex align-items-center">
 				<div class="banner-content col-lg-9 col-md-12">
 					<h1>
-						Lost <br> Property <br> Search
+						분실물 <br> 조회 <br> 서비스
 					</h1>
-					<a href="#" class="primary-btn header-btn text-capitalize mt-10">조회하러 가기&nbsp;&nbsp;→</a>
+					<a href="/lost/lostItemSearch.do" class="primary-btn header-btn text-capitalize mt-10">조회하러 가기&nbsp;&nbsp;→</a>
 				</div>
 			</div>
 		</div>
@@ -47,80 +47,7 @@
 			<div class="row align-items-center">
 				<div class="col-lg-6">
 					<div class="row">
-						<div class="col-lg-6 col-md-6 mb-30">
-							<div class="single-circle">
-								<div class="single-item">
-									<div class="progressBar progressBar--animateText" data-progress="75">
-										<svg class="progressBar-contentCircle" viewBox="0 0 200 200">
-											<circle transform="rotate(-90, 100, 100)" class="progressBar-background" cx="100" cy="100" r="95" />
-											<circle transform="rotate(-90, 100, 100)" class="progressBar-circle" cx="100" cy="100" r="95" />
-										</svg>
-										<span class="progressBar-percentage progressBar-percentage-count">1.5K</span>
-									</div>
-								</div>
-								<h4>버스</h4>
-							</div>
-						</div>
-
-						<div class="col-lg-6 col-md-6 mb-30">
-							<div class="single-circle">
-								<div class="single-item">
-									<div class="progressBar progressBar--animateText" data-progress="75">
-										<svg class="progressBar-contentCircle" viewBox="0 0 200 200">
-											<circle transform="rotate(-90, 100, 100)" class="progressBar-background" cx="100" cy="100" r="95" />
-											<circle transform="rotate(-90, 100, 100)" class="progressBar-circle" cx="100" cy="100" r="95" />
-										</svg>
-										<span class="progressBar-percentage progressBar-percentage-count">10</span>
-									</div>
-								</div>
-								<h4>지하철</h4>
-							</div>
-						</div>
-
-						<div class="col-lg-6 col-md-6 mb-30">
-							<div class="single-circle">
-								<div class="single-item">
-									<div class="progressBar progressBar--animateText" data-progress="75">
-										<svg class="progressBar-contentCircle" viewBox="0 0 200 200">
-											<circle transform="rotate(-90, 100, 100)" class="progressBar-background" cx="100" cy="100" r="95" />
-											<circle transform="rotate(-90, 100, 100)" class="progressBar-circle" cx="100" cy="100" r="95" />
-										</svg>
-										<span class="progressBar-percentage progressBar-percentage-count">250</span>
-									</div>
-								</div>
-								<h4>택시</h4>
-							</div>
-						</div>
-
-						<div class="col-lg-6 col-md-6 mb-30">
-							<div class="single-circle">
-								<div class="single-item">
-									<div class="progressBar progressBar--animateText" data-progress="75">
-										<svg class="progressBar-contentCircle" viewBox="0 0 200 200">
-											<circle transform="rotate(-90, 100, 100)" class="progressBar-background" cx="100" cy="100" r="95" />
-											<circle transform="rotate(-90, 100, 100)" class="progressBar-circle" cx="100" cy="100" r="95" />
-										</svg>
-										<span class="progressBar-percentage progressBar-percentage-count">369</span>
-									</div>
-								</div>
-								<h4>On Going Job</h4>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="offset-lg-1 col-lg-5">
-					<div class="row justify-content-center">
-						<div class="col-lg-12">
-							<div class="main-title text-left">
-								<h1>We can be your digital Problems Solution Partner</h1>
-								<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially
-									in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach.
-								</p>
-								<a href="#" class="primary-btn offer-btn mr-10">What we Offer</a>
-								<a href="#" class="primary-btn quote-btn">Get a free Quote</a>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -132,8 +59,6 @@
 	<section class="testimonial-area section-gap">
 	</section>
 	<!--######## End testimonial Area ########-->
-
-	
 
 	<%@include file="/WEB-INF/view/mainFooter.jsp" %>
 	

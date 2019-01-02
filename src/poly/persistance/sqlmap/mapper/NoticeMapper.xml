@@ -5,14 +5,14 @@
 	
 	<!-- 공지사항 목록 -->
 	<select id="noticeList" resultType="NoticeDTO">
-		SELECT NTNO,
-			   NTTITLE,
-			   NTCONTENT,
-			   NTWRITER,
-			   NTREGDATE,
-			   NTREGNO,
-			   NTUPDDATE,
-			   NTUPDNO
+		SELECT NTNO
+			   ,NTTITLE
+			   ,NTCONTENT
+			   ,NTWRITER
+			   ,NTREGDATE
+			   ,NTREGNO
+			   ,NTUPDDATE
+			   ,NTUPDNO
 		FROM NOTICE
 	</select>
 	
@@ -23,12 +23,14 @@
 			,NTCONTENT
 			,NTWRITER
 			,NTREGDATE
+			,NTREGNO
 		)
 		VALUES (
 			#{ntTitle}
 			,#{ntContent}
 			,#{ntWriter}
 			,now()
+			,#{ntRegNo}
 		)
 		
 		<selectKey resultType="string" keyProperty="ntNo" order="AFTER">
@@ -36,11 +38,40 @@
 		</selectKey>
 	</insert>
 	
-	<!-- RegNo 해야함!-->
-	<update id="updateRegNo" parameterType="NoticeDTO">
+	<!-- 공지사항 상세 -->
+	<select id="noticeDetail" parameterType="String" resultType="NoticeDTO">
+		SELECT NTNO
+			   ,NTTITLE
+			   ,NTCONTENT
+			   ,NTWRITER
+			   ,NTREGDATE
+		FROM NOTICE
+		WHERE NTNO=#{ntNo}
+	</select>
+	
+	<!-- 공지사항 수정 -->
+	<update id="noticeUpdate" parameterType="NoticeDTO">
 		UPDATE NOTICE
-		SET NTREGNO=#{ntRegNo}
-		WHERE NTNO=#{ntRegNo}
+		SET NTTITLE=#{ntTitle}
+			,NTCONTENT=#{ntContent}
+		WHERE NTNO = #{ntNo}
 	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="noticeDelete" parameterType="String">
+		DELETE FROM NOTICE
+		WHERE NTNO=#{ntNo}
+	</delete>
+	
+	<!-- 마이페이지 > 내가 쓴 글 보기 -->
+	<select id="userWriteList" resultType="NoticeDTO">
+		SELECT NTNO
+			  ,NTTITLE
+			  ,NTCONTENT
+			  ,NTWRITER
+			  ,NTREGDATE
+			  ,NTREGNO
+		FROM NOTICE
+	</select>
 	
 </mapper>

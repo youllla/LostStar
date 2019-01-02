@@ -1,6 +1,12 @@
+<%@page import="poly.dto.CommDTO"%>
+<%@page import="poly.dto.NoticeDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<% 
+	List<NoticeDTO> nList = (List<NoticeDTO>)request.getAttribute("nList");
+	List<CommDTO> cList = (List<CommDTO>)request.getAttribute("cList");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,78 +14,137 @@
 <title>Insert title here</title>
 <%@include file="/WEB-INF/view/cssjs.jsp" %>
 
-<script type="text/javascript">
-	//ID찾기
-	$("#idFind").click(function(){
-		var name=$("#name").val();
-		var tel=$("#tel").val();
+<script>
+$(function(){
+	var userNo = $('#userNo').val();
+	var select = $('select[name=select]');
+	
+	select.change(function(){
+		var selected=$('select[name=select] option:selected').val();
 		
-		if(name==''){
-			alert("이름을 입력해주세요.");
-			return false;
-		} else if(tel==''){
-			alert("전화번호를 입력해주세요.");
-			return false;
-		} else {
+		if(userNo==1) {
 			$.ajax({
-				url : "/user/idFind.do",
-				type : 'POST',
-				data : {
-					'name' : name,
-					'tel' : tel
-				},
+				url:"/user/userWriteListAjax.do",
+				method:'get',
+				data:{'userNo':userNo},
 				success:function(data){
 					console.log(data);
-					alert("여기까지 data : " + data);
+					var content = '';
+					var nList= data.nList;
+					var cList= data.cList;
 					
-					var content="";
-					$.each(data, function(key, value){
-						content+="<div class='container'"
-						content+=""
-						content+=""
+					if(selected=="notice"){
+						content += '<div class="table-head">';
+						content += '<div class="serial">No.</div>';
+						content += '<div class="country">제목</div>';
+						content += '<div class="visit">작성자</div>';
+						content += '<div class="percentage">작성일</div>';
+						content += '</div>';
 						
-					})
+						for(var i = 0 ; i < nList.length; i++){
+							if(nList[i].ntWriter=="권유라"){
+							content += '<a href="/notice/noticeDetail.do?ntNo=' + nList[i].ntNo + '">';
+							content += '<div class="table-row">';
+							content += '<div class="serial">' + nList[i].ntNo + '</div>';
+							content += '<div class="country">' + nList[i].ntTitle + '</div>';
+							content += '<div class="visit">' + nList[i].ntWriter + '</div>'; 
+							content += '<div class="percentage">' + nList[i].ntRegDate + '</div>';
+							content += '</div>'
+							}
+						}
+					}else if(selected=="community"){
+						content += '<div class="table-head">';
+						content += '<div class="serial">No.</div>';
+						content += '<div class="country">제목</div>';
+						content += '<div class="visit">작성자</div>';
+						content += '<div class="percentage">작성일</div>';
+						content += '</div>';
+						
+						for(var i = 0 ; i < cList.length; i++){
+							if(cList[i].commWriter=="권유라"){
+							content += '<a href="/community/commDetail.do?commNo=' + cList[i].commNo + '">';
+							content += '<div class="table-row">';
+							content += '<div class="serial">' + cList[i].commNo + '</div>';
+							content += '<div class="country">' + cList[i].commTitle + '</div>';
+							content += '<div class="visit">' + cList[i].commWriter + '</div>'; 
+							content += '<div class="percentage">' + cList[i].commRegDate + '</div>';
+							content += '</div>'
+							}
+						}
+					}
+					content += '</div>';
+					console.log(content);
+					$('#writeList').html(content);
+				},
+				error:function(error){
+					alert(error);
 				}
 			})
 		}
 	})
+});
 </script>
+
 </head>
 <body>
 
 	<%@include file="/WEB-INF/view/mainTop.jsp" %>
-
-	<div class="container" style="margin-top:20px;">
-		<div class="typography" style="align:center">
-		<h2 class="typo-list" style="margin-bottom:50px; text-align:center; /* text-decoration:underline; */">Register Account</h2>
+	
+	<!--######## start banner Area ########-->
+	<section class="banner-area relative" id="home">
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white text-uppercase">
+						내가 작성한 글 보기
+					</h1>
+					<p class="text-white link-nav"><a href="/main.do">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="/about.do">
+							MyWriting</a></p>
+				</div>
+			</div>
 		</div>
-			<form action="/user/userRegProc.do" method="post">
-				<div style="margin-bottom:100px; padding:0px 10px 0px 10px; text-align:center; margin: 0 auto; width:60%; /* min-width:100% */">
-					<div class="mt-10">
-						<input type="text" id="name" name="name" placeholder="NAME" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required="" class="single-input">
-					</div>
-					<div class="mt-10">
-						<input type="text" id="tel" name="tel" placeholder="TEL" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required="" class="single-input">
-					</div>
-					<div class="mt-10">
-						<input type="text" id="id" name="id" placeholder="ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required="" class="single-input">
-						<!-- <button type="submit" id="idCheck" name="idCheck">중복확인</button> -->
-						<input type="button" id="idChk" value="중복확인" >
-					</div>
-					<div class="mt-10">
-						<input type="password" id="password" style="margin-bottom:30px" name="password" placeholder="PASSWORD" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required="" class="single-input">
-					</div>
-				<div class="mt-10">
-				<button type="submit" class="genric-btn success circle arrow" style="margin-bottom:200px">JOIN<span class="lnr lnr-arrow-right"></span></button>
+	</section>
+	<!--######## End banner Area ########-->
+	
+	<section class="latest-news-area section-gap">
+		<div class="container">
+			<%if(userNo.equals("1")) {%>
+			<select name="select" id="select">
+				<option value="notice" id="notice">공지사항</option>
+				<option value="community" id="community">자유게시판</option>
+			</select>
+			<%} else { %>
+			<select name="select" id="select">
+				<option value="community" id="community">자유게시판</option>
+			</select>
+			<%} %>
+			<div class="progress-table" id="writeList">
+				<div class="table-head">
+					<div class="serial">No.</div>
+					<div class="country">제목</div>
+					<div class="visit">작성자</div>
+					<div class="percentage">작성일</div>
 				</div>
-					
-				</div>
-				
-				
-			</form>
-	</div>
+				<%for(int i=0; i<cList.size(); i++) {%>
+				<%if(commWriter.equals("송진수")) {%>
+				<a href="/community/commDetail.do?commNo=<%=cList.get(i).getCommNo()%>">
+					<div class="table-row">
+						<div class="serial"><%=cList.get(i).getCommNo()%></div>
+						<div class="country"><%=cList.get(i).getCommTitle() %></div>
+						<div class="visit"><%=cList.get(i).getCommWriter() %></div>
+						<div class="percentage"><%=cList.get(i).getCommRegDate() %></div>
+					</div>
+				</a>
+				<%} %>
+				<%} %>
+			</div>
+		</div>
+	</section>
+	
+	<input type="hidden" value="<%=userNo %>" id="userNo">
+	<input type="hidden" value="<%=commWriter %>" id="commWriter">
 
 	<%@include file="/WEB-INF/view/mainFooter.jsp" %>
-
+	
 </body>
 </html>

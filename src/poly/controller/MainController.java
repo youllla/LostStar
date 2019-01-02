@@ -27,49 +27,10 @@ import poly.util.CmmUtil;
 public class MainController {
 	private Logger log = Logger.getLogger(this.getClass());
 	
-	
 	//메인화면
 	@RequestMapping(value="main")
 	public String main(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception{
-		
-		log.info("main");
 		return "/main";
-	}
-	
-	@RequestMapping(value="portfolio")
-	public String portfolio(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
-		log.info("portfolio");
-		return "/portfolio";
-	}
-	
-	@RequestMapping(value="blog_home")
-	public String bloghome(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
-		log.info("blog_home");
-		return "/blog_home";
-	}
-	
-	@RequestMapping(value="blog_single")
-	public String blogsingle(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
-		log.info("blog_single");
-		return "/blog_single";
-	}
-	
-	@RequestMapping(value="contact")
-	public String contact(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
-		log.info("contact");
-		return "/contact";
-	}
-	
-	@RequestMapping(value="portfolio_detail")
-	public String portfolio_detail(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
-		log.info("portfolio_detail");
-		return "/portfolio_detail";
-	}
-	
-	@RequestMapping(value="elements")
-	public String elements(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
-		log.info("elements");
-		return "/elements";
 	}
 	
 }

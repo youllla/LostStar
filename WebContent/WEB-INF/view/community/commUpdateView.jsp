@@ -1,6 +1,11 @@
+<%@page import="poly.dto.CommDTO"%>
+<%@page import="poly.dto.NoticeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+	CommDTO cDTO = (CommDTO)request.getAttribute("cDTO");
+%>
 <html lang="zxx" class="no-js">
 
 <head>
@@ -67,24 +72,40 @@
 
 <body>
 	<%@include file="/WEB-INF/view/mainTop.jsp" %>
+	
+	<!--######## start banner Area ########-->
+	<section class="banner-area relative" id="home">
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white text-uppercase">
+						자유게시판
+					</h1>
+					<p class="text-white link-nav"><a href="/main.do">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="/about.do">
+							Community</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--######## End banner Area ########-->
+	
 	<div class="container">
 		<div class="comment-form" style="width:80%; margin-left:100px; margin-bottom:70px;">
-			<h4>Notice Registration</h4>
-			<form action="/notice/noticeWrite.do" method="post">
+			<h4>게시판 글쓰기</h4>
+			<form action="/community/commUpdate.do?commNo=<%=cDTO.getCommNo() %>" method="post">
 				<div class="form-group">
-					<input type="text" class="form-control" id="ntTitle" name="ntTitle" placeholder="Title">
+					<input type="text" class="form-control" id="commTitle" name="commTitle" placeholder="Title" value="<%=cDTO.getCommTitle() %>">
 				</div>
 				<div class="form-group">
-					<textarea class="form-control mb-10" rows="10" id="ntContent" name="ntContent" placeholder="Content"></textarea>
+					<textarea class="form-control mb-10" rows="10" id="commContent" name="commContent" placeholder="Content"><%=cDTO.getCommContent() %></textarea>
 				</div>
 				<button type="submit" class="myButton">등록</button>
 				<button type="reset" class="myButton">취소</button>
-				<!-- <button class="primary-btn primary" style="float: right;">Send Message</button> -->
-			<input type="hidden" name="ntWriter" value="<%=name %>" />
-			<input type="hidden" name="ntRegNo" value="<%=userNo %>"/>
+			<input type="hidden" name="commWriter" value="<%=name %>" />
+			<input type="hidden" name="commRegNo" value="<%=userNo %>"/>
 			</form>
 		</div>
-	</div>				
+	</div>
 	<%@include file="/WEB-INF/view/mainFooter.jsp" %>
 
 </body>

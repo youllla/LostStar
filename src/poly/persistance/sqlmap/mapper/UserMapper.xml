@@ -6,18 +6,18 @@
 	<!-- 회원가입 -->
 	<insert id="insertUser" parameterType="UserDTO">
 		INSERT INTO USER (
-			NAME,
-			TEL,
-			ID,
-			PASSWORD,
-			REGDATE
+			NAME
+			,TEL
+			,ID
+			,PASSWORD
+			,REGDATE
 		)
 		VALUES (
-			#{name},
-			#{tel},
-			#{id},
-			#{password},
-			NOW()
+			#{name}
+			,#{tel}
+			,#{id}
+			,#{password}
+			,NOW()
 		)
 		<!-- RegNo 증가시키기 -->
 		<selectKey resultType="string" keyProperty="userNo" order="AFTER">
@@ -40,43 +40,59 @@
 	</select>
 	
 	<!-- 아이디찾기 -->
-	<select id="getIdFind" parameterType="UserDTO" resultType="UserDTO">
-		SELECT ID,NAME
+	<select id="userIdFind" parameterType="UserDTO" resultType="UserDTO">
+		SELECT ID
 		FROM USER
 		WHERE NAME=#{name} AND TEL=#{tel}
 	</select>
 	
+	<!-- <select id="userPwFind" parameterType="UserDTO" resultType="UserDTO">
+		SELECT PASSWORD
+		FROM USER
+		WHERE NAME=#{name} AND ID=#{id}
+	</select> -->
+	
+	 <!-- 비밀번호찾기 -->
+	<update id="userPwFind" parameterType="UserDTO">
+	UPDATE
+		USER
+	SET
+		PASSWORD = #{password}
+	WHERE
+		ID=#{id} AND NAME=#{name}
+ 	</update>
+	
 	<!-- 로그인 -->
 	<select id="userLogin" parameterType="UserDTO" resultType="UserDTO">
-		SELECT USERNO,
-			   ID,
-			   PASSWORD,
-			   NAME
+		SELECT USERNO
+			   ,ID
+			   ,PASSWORD
+			   ,NAME
 			FROM USER
 		  WHERE ID=#{id} AND PASSWORD=#{password}
 	</select>
 	
 	<!-- 회원목록 -->
 	<select id="userList" resultType="UserDTO">
-		SELECT USERNO,
-			   ID,
-			   PASSWORD,
-			   NAME,
-			   TEL,
-			   REGDATE,
-			   REGNO,
-			   UPDDATE,
-			   UPDNO
+		SELECT USERNO
+			   ,ID
+			   ,PASSWORD
+			   ,NAME
+			   ,TEL
+			   ,REGDATE
+			   ,REGNO
+			   ,UPDDATE
+			   ,UPDNO
 		FROM USER
 	</select>
 	
 	<!-- 회원상세정보 -->
 	<select id="userDetail" parameterType="String" resultType="UserDTO">
-		SELECT USERNO,
-			   ID,
-			   PASSWORD,
-			   NAME,
-			   TEL
+		SELECT USERNO
+			   ,ID
+			   ,PASSWORD
+			   ,NAME
+			   ,TEL
 		FROM USER
 		WHERE USERNO=#{userNo}
 	</select>
@@ -84,9 +100,9 @@
 	<!-- 회원정보변경 -->
 	<update id="userUpdate" parameterType="UserDTO">
 		UPDATE USER
-		SET NAME=#{name},
-			TEL=#{tel},
-			ID=#{id}
+		SET NAME=#{name}
+			,TEL=#{tel}
+			,ID=#{id}
 		WHERE USERNO = #{userNo}
 	</update>
 	
@@ -95,5 +111,12 @@
 		DELETE FROM USER
 		WHERE USERNO=#{userNo}
 	</delete>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="userPwUpdateProc" parameterType="UserDTO">
+		UPDATE USER
+		SET PASSWORD=#{password}
+		WHERE USERNO = #{userNo}
+	</update>
 
 </mapper>
